@@ -1,14 +1,13 @@
 import React from 'react';
 
-import './Card.styles.css';
+import { CardContainer, CardImageContainer } from './Card.styles';
 
-const Card = () => {
+const Card = ({name }) => {
     return (
-      <div>
-        <img src='' alt='' />
-        <h2>name</h2>
-        <p></p>
-      </div>
+      <CardContainer>
+          <CardImageContainer src={require(`../../img/default.jpg`)} alt={name} />
+          <h2>{name}</h2>
+      </CardContainer>
     );
 };
 
