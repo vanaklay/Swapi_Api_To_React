@@ -7,7 +7,7 @@ export const CharactersPageContainer = styled.div`
 
 export const PreviewCard = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-content: center;
     text-align: center;
     @media (min-width: 769px) and (max-width: 1200px) {
