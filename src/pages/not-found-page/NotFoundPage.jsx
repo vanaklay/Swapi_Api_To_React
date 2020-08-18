@@ -1,10 +1,13 @@
 import React from 'react';
 
+import { NotFoundContainer } from './NotFoundPage.styles';
+
 const NotFoundPage = () => {
     return (
-        <div>
-            <h1>Il n'y a rien ici</h1>
-        </div>
+        <NotFoundContainer>
+            <h1>QUE LA FORCE SOIT AVEC TOI</h1>
+            <h2>MAIS IL N'Y A RIEN ICI</h2>
+        </NotFoundContainer>
     );
 };
 

@@ -19,35 +19,22 @@ export const fetchCharactersFail = (errorMessage) => ({
     payload: errorMessage
 });
 
-const fetchDataFromSwapi = async (idx) => {
-    const res = await fetch(`https://swapi.dev/api/people/${idx}/`);
+const fetchDataFromSwapi = async (page = 1) => {
+    const res = await fetch(`https://swapi.dev/api/people/?page=${page}`);
+    if ( res.status === 404 ) {
+        throw new Error('error 404');
+    }
     const resJson = await res.json();
-    return {
-        id: `${idx}-${Date.now()}`,
-        imageUrl: `${idx}.jpg`,
-        ...resJson
-    }
+    return resJson.results;
 };
 
-const createAllCharactersArray = async (a, b) => {
-    let allCharacters = [];
-    for (let i = a; i < b; i++) {
-        await fetchDataFromSwapi(i)
-        .then(character => {
-            if (!character.detail) {
-                allCharacters.push(character)
-            }
-        });
-    }
-    return allCharacters;
-};
 
-export const fetchAllCharacters = (a, b) => {
+export const fetchAllCharacters = (page) => {
     return dispatch => {
         dispatch(fetchCharactersStart);
-        createAllCharactersArray(a, b).then(data => {
+        fetchDataFromSwapi(page).then(data => {
             dispatch(fetchAllCharactersSuccess(data));
-        }).catch(error => dispatch(fetchCharactersFail(error)));
+        }).catch(error => dispatch(fetchCharactersFail(error.message)));
     }
 }
 
@@ -57,11 +44,20 @@ export const fetchOneCharacterSuccess = (character) => ({
     payload: character
 });
 
-export const fetchOneCharacter = (idx) => {
+const fetchCharacterFromSwapi = async (i) => {
+        const res = await fetch(`https://swapi.dev/api/people/${i}/`);
+        if ( res.status === 404 ) {
+            throw new Error('error 404');
+        }
+        const resJson = await res.json();
+        return resJson;
+};
+
+export const fetchOneCharacter = (i) => {
     return dispatch => {
         dispatch(fetchCharactersStart);
-        fetchDataFromSwapi(idx).then(data => {
+        fetchCharacterFromSwapi(i).then(data => {
             dispatch(fetchOneCharacterSuccess(data));
-        }).catch(error => dispatch(fetchCharactersFail(error)));
+        }).catch(error => dispatch(fetchCharactersFail(error.message)));
     }
 }

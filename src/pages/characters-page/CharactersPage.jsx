@@ -1,17 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import Card from '../../components/card/Card';
 import Spinner from '../../components/spinner/Spinner';
-import { CharactersPageContainer, PreviewCard } from './CharactersPage.styles';
+import { CharactersPageContainer, PreviewCard, PagesContainer } from './CharactersPage.styles';
 
 import { fetchAllCharacters } from '../../redux/actions';
 
 const CharactersPage = ({ fetchAllCharacters, peoples }) => {
+    const [page, setPage] = useState(1);
+    const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     useEffect(() => {
-        fetchAllCharacters(1, 11);
-    }, [fetchAllCharacters]);
+        fetchAllCharacters(page);
+    }, [fetchAllCharacters, page]);
 
+    const renderPages = () => {
+        return pages.map(page => (
+            <button key={page} onClick={() => setPage(page)}>{page}</button>
+        ))
+    };
     function renderPreviewCard() {
         if (peoples) {
             return (
@@ -19,7 +26,7 @@ const CharactersPage = ({ fetchAllCharacters, peoples }) => {
                     { peoples.map(people => {
                         return (
                             <Card 
-                                key={people.id} 
+                                key={people.name} 
                                 items={people} 
                             />);
                         }) }
@@ -31,9 +38,14 @@ const CharactersPage = ({ fetchAllCharacters, peoples }) => {
     };
     
     return (
+        <div>
+        <PagesContainer>
+            { renderPages() }
+        </PagesContainer>
         <CharactersPageContainer>
             { renderPreviewCard() }
         </CharactersPageContainer>
+        </div>
     );
 };
 

@@ -10,8 +10,8 @@ export const CardContainer = styled.div`
     }
     width: 16rem;
     border-radius: 0.5rem;
-    box-shadow: 4px 4px 8px 0px rgba( 0, 0, 0, 0.2 );
     margin: 0.5rem;
+    background-color: white;
 `;
 
 export const CardImageContainer = styled.img`

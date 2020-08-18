@@ -18,3 +18,10 @@ export const PreviewCard = styled.div`
         grid-template-columns: 1fr;
     }
 `;
+
+export const PagesContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+`;

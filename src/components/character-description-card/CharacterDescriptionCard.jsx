@@ -4,11 +4,11 @@ import { DescriptionContainer, DetailsContainer, ImageContainer } from './Charac
 
 import { requireImage } from '../../utils/useRequireImage';
 
-const CharacterDescriptionCard = ({ people }) => {
+const CharacterDescriptionCard = ({ people, imageUrl }) => {
 
     return (
         <DescriptionContainer>
-            <ImageContainer src={requireImage(people.imageUrl)} alt={people.name} />
+            <ImageContainer src={requireImage(imageUrl)} alt={people.name} />
             <DetailsContainer>
                 <p>{people.name.toUpperCase()}</p>
                 <p>Année de naissance : {people.birth_year}</p>
