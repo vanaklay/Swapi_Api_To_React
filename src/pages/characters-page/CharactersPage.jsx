@@ -1,32 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import Card from '../../components/card/Card';
 import Spinner from '../../components/spinner/Spinner';
 import { CharactersPageContainer, PreviewCard } from './CharactersPage.styles';
 
-const CharactersPage = (props) => {
-    const [peoples, setPeoples] = useState([]);
+import { fetchAllCharacters } from '../../redux/actions';
+
+const CharactersPage = ({ fetchAllCharacters, peoples }) => {
     useEffect(() => {
-        const fetchDataFromSwapi = async (idx) => {
-            const res = await fetch(`https://swapi.dev/api/people/${idx}/`);
-            const resJson = await res.json();
-            setPeoples( previous => {
-                return [...previous, {
-                    id: `${idx}-${Date.now()}`,
-                    imageUrl: `${idx}.jpg`,
-                    ...resJson
-                }]
-            });
-        };
-        for (let i = 1; i < 11; i++) {
-            fetchDataFromSwapi(i);
-        }
-    }, []);
+        fetchAllCharacters(11, 21);
+    }, [fetchAllCharacters]);
+
     function renderPreviewCard() {
         if (peoples) {
             return (
                 <PreviewCard>
-                    { peoples.map(people => (<Card key={people.name} items={people} />))}
+                    { peoples.map(people => {
+                        return (
+                            <Card 
+                                key={people.id} 
+                                items={people} 
+                            />);
+                        }) }
                 </PreviewCard>
                 );
         } else {
@@ -41,4 +37,10 @@ const CharactersPage = (props) => {
     );
 };
 
-export default CharactersPage;
+const mapStateToProps = state => {
+    return {
+        peoples: state.characters.allCharacters
+    };
+};
+
+export default connect(mapStateToProps, { fetchAllCharacters })(CharactersPage);

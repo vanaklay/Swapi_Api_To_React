@@ -1,9 +1,9 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { CardContainer, CardImageContainer } from './Card.styles';
 
-const Card = ({ items }) => {
+const Card = ({ items, history, match }) => {
     const requireImage = imageUrl => {
       try {
         return require(`../../img/${imageUrl}`);
@@ -13,7 +13,7 @@ const Card = ({ items }) => {
     };
     const id = items.id.split('-')[0];
     const handleClick = (id) => {
-      return <Redirect to={`/characters/${id}`} />;
+      history.push(`${match.path}${id}`);
     };
     return (
       <CardContainer onClick={() => handleClick(id)} >
@@ -23,4 +23,4 @@ const Card = ({ items }) => {
     );
 };
 
-export default Card;
+export default withRouter(Card);
