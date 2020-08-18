@@ -9,7 +9,7 @@ import { fetchAllCharacters } from '../../redux/actions';
 
 const CharactersPage = ({ fetchAllCharacters, peoples }) => {
     useEffect(() => {
-        fetchAllCharacters(11, 21);
+        fetchAllCharacters(1, 11);
     }, [fetchAllCharacters]);
 
     function renderPreviewCard() {

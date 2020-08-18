@@ -1,7 +1,11 @@
-import { FETCH_CHARACTERS_START, FETCH_CHARACTERS_SUCCESS, FETCH_CHARACTERS_FAIL } from './types';
+import { FETCH_CHARACTERS_START, 
+        FETCH_CHARACTERS_SUCCESS, 
+        FETCH_CHARACTERS_FAIL,
+        FETCH_ONE_CHAR_SUCCESS,
+     } from './types';
 
 // Fetch all characters
-export const fetchAllCharactersStart = () => ({
+export const fetchCharactersStart = () => ({
     type: FETCH_CHARACTERS_START
 });
 
@@ -10,7 +14,7 @@ export const fetchAllCharactersSuccess = (characters) => ({
     payload: characters
 });
 
-export const fetchAllCharactersFail = (errorMessage) => ({
+export const fetchCharactersFail = (errorMessage) => ({
     type: FETCH_CHARACTERS_FAIL,
     payload: errorMessage
 });
@@ -28,17 +32,36 @@ const fetchDataFromSwapi = async (idx) => {
 const createAllCharactersArray = async (a, b) => {
     let allCharacters = [];
     for (let i = a; i < b; i++) {
-        const character = await fetchDataFromSwapi(i);
-        allCharacters.push(character);
+        await fetchDataFromSwapi(i)
+        .then(character => {
+            if (!character.detail) {
+                allCharacters.push(character)
+            }
+        });
     }
     return allCharacters;
 };
 
 export const fetchAllCharacters = (a, b) => {
     return dispatch => {
-        dispatch(fetchAllCharactersStart);
+        dispatch(fetchCharactersStart);
         createAllCharactersArray(a, b).then(data => {
             dispatch(fetchAllCharactersSuccess(data));
-        }).catch(error => dispatch(fetchAllCharactersFail(error)));
+        }).catch(error => dispatch(fetchCharactersFail(error)));
+    }
+}
+
+// Fetch one character from SWAPI 
+export const fetchOneCharacterSuccess = (character) => ({
+    type: FETCH_ONE_CHAR_SUCCESS,
+    payload: character
+});
+
+export const fetchOneCharacter = (idx) => {
+    return dispatch => {
+        dispatch(fetchCharactersStart);
+        fetchDataFromSwapi(idx).then(data => {
+            dispatch(fetchOneCharacterSuccess(data));
+        }).catch(error => dispatch(fetchCharactersFail(error)));
     }
 }
