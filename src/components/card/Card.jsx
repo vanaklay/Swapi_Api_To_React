@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { CardContainer, CardImageContainer, ImageContainer } from './Card.styles';
+import { CardContainer, CardImageContainer } from './Card.styles';
 
 import { requireImage } from '../../utils/useRequireImage';
 

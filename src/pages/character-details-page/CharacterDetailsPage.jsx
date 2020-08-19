@@ -17,7 +17,6 @@ const CharacterDetailsPage = ({ people, fetchOneCharacter, errorMessage, history
     useEffect(() => {
         fetchOneCharacter(id);
     },[id, fetchOneCharacter]);
-    console.log(people);
 
     const renderCharacterView = () => {
         if (people) {

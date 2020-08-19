@@ -6,3 +6,17 @@ export const fetchDataFromSwapi = async (url) => {
         return res.json();
     }
 };
+
+export const fetchStart = (type) => ({
+    type: type
+});
+
+export const fetchSuccess = (type, payload) => ({
+    type: type,
+    payload: payload
+});
+
+export const fetchFailed = (type, payload) => ({
+    type: type,
+    payload: payload
+});

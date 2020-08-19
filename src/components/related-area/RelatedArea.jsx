@@ -6,6 +6,7 @@ const RelatedArea = ({ relatedProps, children }) => {
     return (
         <AreaContainer>
             <AreaHeader>{ children }</AreaHeader>
+            
         </AreaContainer>
     );
 };

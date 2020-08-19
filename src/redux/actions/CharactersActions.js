@@ -2,7 +2,7 @@ import { FETCH_CHARACTERS_START,
         FETCH_CHARACTERS_SUCCESS, 
         FETCH_CHARACTERS_FAIL,
         FETCH_ONE_CHAR_SUCCESS,
-     } from './types';
+     } from '../types';
 
 import { fetchDataFromSwapi } from '../../utils/useFetchDataFromSwapi';
 
