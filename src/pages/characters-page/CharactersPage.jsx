@@ -7,12 +7,12 @@ import { CharactersPageContainer, PreviewCard, PagesContainer } from './Characte
 
 import { fetchAllCharacters } from '../../redux/actions';
 
-const CharactersPage = ({ fetchAllCharacters, peoples }) => {
+const CharactersPage = ({ onfetchAllCharacters, peoples }) => {
     const [page, setPage] = useState(1);
     const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     useEffect(() => {
-        fetchAllCharacters(page);
-    }, [fetchAllCharacters, page]);
+        onfetchAllCharacters(page);
+    }, [onfetchAllCharacters, page]);
 
     const renderPages = () => {
         return pages.map(page => (
@@ -55,4 +55,10 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { fetchAllCharacters })(CharactersPage);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onfetchAllCharacters: (page) => dispatch(fetchAllCharacters(page))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CharactersPage);
