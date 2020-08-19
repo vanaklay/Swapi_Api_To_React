@@ -10,14 +10,13 @@ export const CardContainer = styled.div`
     }
     width: 16rem;
     border-radius: 0.5rem;
+    padding: 0.5rem;
     margin: 0.5rem;
     background-color: white;
 `;
 
 export const CardImageContainer = styled.img`
     border-radius: 0.5rem;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
     height: 16rem;
     width: 100%;
 `;
