@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { requestRelatedItems } from '../../redux/related-items/RelatedItemsActions';
+import { requestMovies } from '../../redux/related-items/RelatedItemsActions';
 
 import Spinner from '../spinner/Spinner';
 
-import { AreaContainer, AreaHeader } from './RelatedArea.styles';
+import { AreaContainer, AreaHeader } from './RelatedMovieArea.styles';
 
-const RelatedArea = ({ relatedItems, children, onrequestRelatedItems, items }) => {
+const RelatedArea = ({ relatedItems, children, onRequestMovies, movies }) => {
     useEffect(() => {
         if (relatedItems) {
-            onrequestRelatedItems(relatedItems)
+            onRequestMovies(relatedItems)
         }
-    }, [relatedItems, onrequestRelatedItems]);
+    }, [relatedItems, onRequestMovies]);
     const renderRelatedFeatures = () => {
-        if (items) {
-            return items.map(item => <p>{ item.title }</p>)
+        if (movies) {
+            return movies.map(movie => <p>{ movie.title }</p>)
         } else {
             return <Spinner />;
         }
@@ -29,9 +29,9 @@ const RelatedArea = ({ relatedItems, children, onrequestRelatedItems, items }) =
 };
 
 const mapStateToProps = state => ({
-    items: state.items.items
+    movies: state.movies.movies
 });
 const mapDispatchToProps = dispatch => ({
-    onrequestRelatedItems: (relatedItems) => dispatch(requestRelatedItems(relatedItems))
+    onRequestMovies: (relatedItems) => dispatch(requestMovies(relatedItems))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(RelatedArea);

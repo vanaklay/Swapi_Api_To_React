@@ -5,7 +5,7 @@ import Card from '../../components/card/Card';
 import Spinner from '../../components/spinner/Spinner';
 import { CharactersPageContainer, PreviewCard, PagesContainer } from './CharactersPage.styles';
 
-import { fetchAllCharacters } from '../../redux/actions';
+import { fetchAllCharacters } from '../../redux/characters/CharactersActions';
 
 const CharactersPage = ({ onfetchAllCharacters, peoples }) => {
     const [page, setPage] = useState(1);

@@ -1,8 +1,6 @@
-import React, { useEffect, Fragment } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
-import { fetchOneCharacter } from '../../redux/actions';
 
 import CharacterDescriptionCard from '../../components/character-description-card/CharacterDescriptionCard';
 import RelatedArea from '../../components/related-area/RelatedArea';
@@ -10,42 +8,40 @@ import Spinner from '../../components/spinner/Spinner';
 
 import { CharacterDetailContainer, AreasContainer } from './CharacterDetailsPage.styles';
 
+import { requestOneCharacter } from '../../redux/description-character/DescriptionCharacterAction';
 
-const CharacterDetailsPage = ({ people, fetchOneCharacter, errorMessage, history }) => {
+const CharacterDetailsPage = ({ character, onRequestOneCharacter, errorMessage }) => {
     const id = useParams().id;
     const imageUrl = id + '.jpg';
-    useEffect(() => {
-        fetchOneCharacter(id);
-    },[id, fetchOneCharacter]);
 
-    const renderCharacterView = () => {
-        if (people) {
-            return (
-                <Fragment>
-                    <CharacterDescriptionCard people={people} imageUrl={imageUrl} />
-                    <AreasContainer>
-                        <RelatedArea relatedProps={people.films}>Films</RelatedArea>
-                        <RelatedArea relatedProps={people.vehicles}>Véhicules</RelatedArea>
-                        <RelatedArea relatedProps={people.starships}>Vaisseaux</RelatedArea>
-                    </AreasContainer>
-                </Fragment>
-            );
+    useEffect(() => {
+        onRequestOneCharacter(id);
+    },[id, onRequestOneCharacter]);
+
+    const renderCharacterDetails = () => {
+        if (character) {
+            return (<CharacterDetailContainer>
+                <CharacterDescriptionCard id={id} imageUrl={imageUrl} character={character} />
+                <AreasContainer>
+                    <RelatedArea relatedItems={character.films}>Films</RelatedArea>
+                    <RelatedArea relatedItems={character.vehicles}>Véhicules</RelatedArea>
+                    <RelatedArea relatedItems={character.starships}>Vaisseaux</RelatedArea>
+                </AreasContainer>
+            </CharacterDetailContainer>);
+        } else if (errorMessage) {
+            return <Redirect to='/characters' />;
         } else {
             return <Spinner />;
         }
-    }
-    return (
-        <CharacterDetailContainer>
-            { errorMessage 
-                ? (history.push('/'))
-                : renderCharacterView() 
-            }
-        </CharacterDetailContainer>
-    );
-};
+    };
 
+    return renderCharacterDetails();
+};
 const mapStateToProps = state => ({
-    people: state.characters.oneCharacter,
-    errorMessage: state.characters.errorMessage
+    character: state.description.character,
+    errorMessage: state.description.errorMessage
 });
-export default connect(mapStateToProps, { fetchOneCharacter })(CharacterDetailsPage);
+const mapDispatchToProps = dispatch => ({
+    onRequestOneCharacter: (id) => dispatch(requestOneCharacter(id))
+});
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterDetailsPage);

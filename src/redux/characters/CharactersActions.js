@@ -1,7 +1,6 @@
 import { FETCH_CHARACTERS_START, 
         FETCH_CHARACTERS_SUCCESS, 
         FETCH_CHARACTERS_FAIL,
-        FETCH_ONE_CHAR_SUCCESS,
      } from '../types';
 
 import { fetchDataFromSwapi } from '../../utils/useFetchDataFromSwapi';
@@ -31,18 +30,3 @@ export const fetchAllCharacters = (page) => {
     }
 }
 
-// Fetch one character from SWAPI 
-export const fetchOneCharacterSuccess = (character) => ({
-    type: FETCH_ONE_CHAR_SUCCESS,
-    payload: character
-});
-
-export const fetchOneCharacter = (i) => {
-    return dispatch => {
-        dispatch(fetchCharactersStart());
-        fetchDataFromSwapi(`https://swapi.dev/api/people/${i}/`)
-        .then(data => {
-            dispatch(fetchOneCharacterSuccess(data));
-        }).catch(error => dispatch(fetchCharactersFail(error.message)));
-    }
-}
