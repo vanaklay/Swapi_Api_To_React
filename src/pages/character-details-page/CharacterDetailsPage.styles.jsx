@@ -6,7 +6,16 @@ export const CharacterDetailContainer = styled.div`
 `;
 
 export const AreasContainer = styled.div`
-    width: 100%;
     display: flex;
     justify-content: space-between;
+
+    @media (min-width: 769px) and (max-width: 1200px) {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `;

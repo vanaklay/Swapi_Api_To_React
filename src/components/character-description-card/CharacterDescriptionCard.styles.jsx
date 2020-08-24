@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const DescriptionContainer = styled.div`
-    height: 20em;
+    height: 24em;
     display: flex;
     margin: 1rem;
 `;
@@ -25,4 +26,15 @@ export const ImageContainer = styled.img`
     border-radius: 3px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+`;
+
+export const NameStyles = styled.p`
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    font-weight: bold;
+`;
+
+export const PlanetLink = styled(Link)`
+    cursor: pointer;
+    text-decoration: none
 `;

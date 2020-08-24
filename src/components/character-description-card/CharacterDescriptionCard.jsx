@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { requestPlanet } from '../../redux/planets/PlanetsActions';
-import { DescriptionContainer, DetailsContainer, ImageContainer } from './CharacterDescriptionCard.styles';
+import { DescriptionContainer, DetailsContainer, ImageContainer, NameStyles, PlanetLink } from './CharacterDescriptionCard.styles';
 import { requireImage } from '../../utils/useRequireImage';
 
 const CharacterDescriptionCard = ({ character, imageUrl, onRequestPlanet, planet }) => {
@@ -15,7 +15,7 @@ const CharacterDescriptionCard = ({ character, imageUrl, onRequestPlanet, planet
         <DescriptionContainer>
             <ImageContainer src={requireImage(imageUrl)} alt={imageUrl} />
             <DetailsContainer>
-                <p>{character.name.toUpperCase()}</p>
+                <NameStyles>{character.name}</NameStyles>
                 <p>Année de naissance : {character.birth_year}</p>
                 <p>Taille : {character.height}</p>
                 <p>Poids : {character.mass} kg</p>
@@ -23,7 +23,7 @@ const CharacterDescriptionCard = ({ character, imageUrl, onRequestPlanet, planet
                 <p>Couleur des yeux : {character.eye_color}</p>
                 <p>Couleur de cheveux : {character.hair_color}</p>
                 <p>Couleur de peau : {character.skin_color}</p>
-                <p>Planète : {planet ? planet.name : null}</p>
+                <p>Planète : {planet ? <PlanetLink to={'/planets/1'}>{planet.name}</PlanetLink> : null}</p>
             </DetailsContainer>
         </DescriptionContainer>
     );

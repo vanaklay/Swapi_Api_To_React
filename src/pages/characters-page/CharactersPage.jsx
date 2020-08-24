@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import Card from '../../components/card/Card';
 import Spinner from '../../components/spinner/Spinner';
+import Pagination from '../../components/pagination/Pagination';
+import CardPreview from '../../components/card-preview/CardPreview';
 import { CharactersPageContainer, PreviewCard, PagesContainer } from './CharactersPage.styles';
 
 import { fetchAllCharacters } from '../../redux/characters/CharactersActions';
@@ -14,37 +16,28 @@ const CharactersPage = ({ onfetchAllCharacters, peoples }) => {
         onfetchAllCharacters(page);
     }, [onfetchAllCharacters, page]);
 
-    const renderPages = () => {
-        return pages.map(page => (
-            <button key={page} onClick={() => setPage(page)}>{page}</button>
-        ))
-    };
-    function renderPreviewCard() {
-        if (peoples) {
-            return (
-                <PreviewCard>
-                    { peoples.map(people => {
-                        return (
-                            <Card 
-                                key={people.name} 
-                                items={people} 
-                            />);
-                        }) }
-                </PreviewCard>
-                );
-        } else {
-            return <Spinner />;
-        }
-    };
+    // function renderPreviewCard() {
+    //     if (peoples) {
+    //         return (
+    //             <PreviewCard>
+    //                 { peoples.map(people => {
+    //                     return (
+    //                         <Card 
+    //                             key={people.name} 
+    //                             items={people} 
+    //                         />);
+    //                     }) }
+    //             </PreviewCard>
+    //             );
+    //     } else {
+    //         return <Spinner />;
+    //     }
+    // };
     
     return (
         <div>
-        <PagesContainer>
-            { renderPages() }
-        </PagesContainer>
-        <CharactersPageContainer>
-            { renderPreviewCard() }
-        </CharactersPageContainer>
+            <Pagination pages={pages} handlePage={(event) => setPage(event)}/>
+            { peoples ? <CardPreview items={peoples.results}/> : <Spinner /> }
         </div>
     );
 };

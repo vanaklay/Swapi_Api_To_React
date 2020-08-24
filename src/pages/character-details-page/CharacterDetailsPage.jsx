@@ -22,14 +22,15 @@ const CharacterDetailsPage = ({ character, onRequestOneCharacter, errorMessage }
 
     const renderCharacterDetails = () => {
         if (character) {
-            return (<CharacterDetailContainer>
-                <CharacterDescriptionCard id={id} imageUrl={imageUrl} character={character} />
-                <AreasContainer>
-                    <RelatedMoviesArea relatedItems={character.films}>Films</RelatedMoviesArea>
-                    <RelatedVehiculesArea relatedItems={character.vehicles}>Véhicules</RelatedVehiculesArea>
-                    <RelatedStarshipsArea relatedItems={character.starships}>Vaisseaux</RelatedStarshipsArea>
-                </AreasContainer>
-            </CharacterDetailContainer>);
+            return (
+                <CharacterDetailContainer>
+                    <CharacterDescriptionCard id={id} imageUrl={imageUrl} character={character} />
+                    <AreasContainer>
+                        <RelatedMoviesArea relatedItems={character.films}>Films</RelatedMoviesArea>
+                        <RelatedVehiculesArea relatedItems={character.vehicles}>Véhicules</RelatedVehiculesArea>
+                        <RelatedStarshipsArea relatedItems={character.starships}>Vaisseaux</RelatedStarshipsArea>
+                    </AreasContainer>
+                </CharacterDetailContainer>);
         } else if (errorMessage) {
             return <Redirect to='/characters' />;
         } else {

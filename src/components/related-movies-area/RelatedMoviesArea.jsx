@@ -5,7 +5,7 @@ import { requestMovies } from '../../redux/related-movies/RelatedMoviesActions';
 
 import Spinner from '../spinner/Spinner';
 
-import { AreaContainer, AreaHeader } from './RelatedMovieArea.styles';
+import { AreaContainer, AreaHeader } from './RelatedMoviesArea.styles';
 
 const RelatedArea = ({ relatedItems, children, onRequestMovies, movies }) => {
     useEffect(() => {

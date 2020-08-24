@@ -6,6 +6,10 @@ export const AreaContainer = styled.div`
     border-radius: 3px;
     width: 30%;
     margin: 1rem;
+
+    @media (max-width: 1200px) {
+        width: 90%;
+    }
 `;
 
 export const AreaHeader = styled.div`

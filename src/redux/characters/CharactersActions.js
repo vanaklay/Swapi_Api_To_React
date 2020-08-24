@@ -25,7 +25,7 @@ export const fetchAllCharacters = (page) => {
         dispatch(fetchCharactersStart());
         fetchDataFromSwapi(`https://swapi.dev/api/people/?page=${page}`)
         .then(data => {
-            dispatch(fetchAllCharactersSuccess(data.results));
+            dispatch(fetchAllCharactersSuccess(data));
         }).catch(error => dispatch(fetchCharactersFail(error.message)));
     }
 }
