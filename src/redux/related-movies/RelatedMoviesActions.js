@@ -1,8 +1,9 @@
-import {REQUEST_RELATED_ITEMS_START, REQUEST_RELATED_ITEMS_SUCCESS, REQUEST_RELATED_ITEMS_FAILED } from '../types';
+import { REQUEST_RELATED_MOVIES_START, REQUEST_RELATED_MOVIES_SUCCESS, REQUEST_RELATED_MOVIES_FAILED} from '../types';
+
 
 import { fetchDataFromSwapi, fetchStart, fetchSuccess, fetchFailed } from '../../utils/useFetchDataFromSwapi';
 
-export const requestRelatedItems = (relatedItems) => {
+export const requestMovies = (relatedItems) => {
     const createItems = async () => {
         const item = (relatedItems[0].split('/')[4]);
         const numbers = relatedItems.map(item => item.split('/')[5]);
@@ -14,9 +15,9 @@ export const requestRelatedItems = (relatedItems) => {
     }
     
     return async dispatch => {
-        dispatch(fetchStart(REQUEST_RELATED_ITEMS_START));
+        dispatch(fetchStart(REQUEST_RELATED_MOVIES_START));
         createItems()
-        .then(data => dispatch(fetchSuccess(REQUEST_RELATED_ITEMS_SUCCESS, data)))
-        .catch(error => dispatch(fetchFailed(REQUEST_RELATED_ITEMS_FAILED, error.message)));
+        .then(data => dispatch(fetchSuccess(REQUEST_RELATED_MOVIES_SUCCESS, data)))
+        .catch(error => dispatch(fetchFailed(REQUEST_RELATED_MOVIES_FAILED, error.message)));
     }
 };

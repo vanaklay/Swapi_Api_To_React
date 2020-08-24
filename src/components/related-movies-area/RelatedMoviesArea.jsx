@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { requestMovies } from '../../redux/related-items/RelatedItemsActions';
+import { requestMovies } from '../../redux/related-movies/RelatedMoviesActions';
 
 import Spinner from '../spinner/Spinner';
 
@@ -15,7 +15,7 @@ const RelatedArea = ({ relatedItems, children, onRequestMovies, movies }) => {
     }, [relatedItems, onRequestMovies]);
     const renderRelatedFeatures = () => {
         if (movies) {
-            return movies.map(movie => <p>{ movie.title }</p>)
+            return movies.map(movie => <p key={movie.title} >{ movie.title }</p>)
         } else {
             return <Spinner />;
         }

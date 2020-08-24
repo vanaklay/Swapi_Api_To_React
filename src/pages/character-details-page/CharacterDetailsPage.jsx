@@ -3,7 +3,9 @@ import { useParams, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import CharacterDescriptionCard from '../../components/character-description-card/CharacterDescriptionCard';
-import RelatedArea from '../../components/related-area/RelatedArea';
+import RelatedMoviesArea from '../../components/related-movies-area/RelatedMoviesArea';
+import RelatedVehiculesArea from '../../components/related-vehicules/RelatedVehiculesArea';
+import RelatedStarshipsArea from '../../components/related-starships-area/RelatedStarshipsArea';
 import Spinner from '../../components/spinner/Spinner';
 
 import { CharacterDetailContainer, AreasContainer } from './CharacterDetailsPage.styles';
@@ -23,9 +25,9 @@ const CharacterDetailsPage = ({ character, onRequestOneCharacter, errorMessage }
             return (<CharacterDetailContainer>
                 <CharacterDescriptionCard id={id} imageUrl={imageUrl} character={character} />
                 <AreasContainer>
-                    <RelatedArea relatedItems={character.films}>Films</RelatedArea>
-                    <RelatedArea relatedItems={character.vehicles}>Véhicules</RelatedArea>
-                    <RelatedArea relatedItems={character.starships}>Vaisseaux</RelatedArea>
+                    <RelatedMoviesArea relatedItems={character.films}>Films</RelatedMoviesArea>
+                    <RelatedVehiculesArea relatedItems={character.vehicles}>Véhicules</RelatedVehiculesArea>
+                    <RelatedStarshipsArea relatedItems={character.starships}>Vaisseaux</RelatedStarshipsArea>
                 </AreasContainer>
             </CharacterDetailContainer>);
         } else if (errorMessage) {

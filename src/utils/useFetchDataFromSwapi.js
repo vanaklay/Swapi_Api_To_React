@@ -20,3 +20,10 @@ export const fetchFailed = (type, payload) => ({
     type: type,
     payload: payload
 });
+
+export const createItems = async (item, numbers) => {
+    const asyncItems = await Promise.all(numbers.map(async num => {
+        return await fetchDataFromSwapi(`https://swapi.dev/api/${item}/${num}/`);
+    } ));
+    return asyncItems;
+}
