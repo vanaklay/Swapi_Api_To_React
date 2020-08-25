@@ -6,10 +6,16 @@ import { CardContainer, CardImageContainer } from './Card.styles';
 import { requireImage } from '../../utils/useRequireImage';
 
 const Card = ({ item, history, match }) => {
-    console.log(item);
-    console.log(match);
-    const id = item.url.split('/')[5];
-    const imageUrl = id + '.jpg';
+    let id = '';
+    let imageUrl = '';
+    if (match.url === '/characters') {
+      id = item.url.split('/')[5];
+      imageUrl = id + '.jpg';
+    } else if (match.url === '/planets') {
+      id = item.url.split('/')[5];
+      imageUrl = 'planets/' + id + '.jpg';
+    }
+    
     const handleClick = (id) => {
       history.push(`${match.path}${id}`);
     };

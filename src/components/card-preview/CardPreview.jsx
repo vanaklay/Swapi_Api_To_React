@@ -1,12 +1,12 @@
 import React from 'react';
 
 import Card from '../card/Card';
+import { PreviewCard } from './CardPreview.styles';
 
 const CardPreview = ({ items }) => {
     // what category ? 
     return (
-        <div>
-            Preview component
+        <PreviewCard>
             { items.map(item => {
                 return (
                     <Card 
@@ -14,7 +14,7 @@ const CardPreview = ({ items }) => {
                         item={item} 
                     />);
             }) }
-        </div>
+        </PreviewCard>
     );
 };
 

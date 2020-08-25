@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import Card from '../../components/card/Card';
 import Spinner from '../../components/spinner/Spinner';
 import Pagination from '../../components/pagination/Pagination';
 import CardPreview from '../../components/card-preview/CardPreview';
-import { CharactersPageContainer, PreviewCard, PagesContainer } from './CharactersPage.styles';
+import { CharactersPageContainer } from './CharactersPage.styles';
 
 import { fetchAllCharacters } from '../../redux/characters/CharactersActions';
 
@@ -15,29 +14,13 @@ const CharactersPage = ({ onfetchAllCharacters, peoples }) => {
     useEffect(() => {
         onfetchAllCharacters(page);
     }, [onfetchAllCharacters, page]);
-
-    // function renderPreviewCard() {
-    //     if (peoples) {
-    //         return (
-    //             <PreviewCard>
-    //                 { peoples.map(people => {
-    //                     return (
-    //                         <Card 
-    //                             key={people.name} 
-    //                             items={people} 
-    //                         />);
-    //                     }) }
-    //             </PreviewCard>
-    //             );
-    //     } else {
-    //         return <Spinner />;
-    //     }
-    // };
     
     return (
         <div>
             <Pagination pages={pages} handlePage={(event) => setPage(event)}/>
-            { peoples ? <CardPreview items={peoples.results}/> : <Spinner /> }
+            <CharactersPageContainer>
+                { peoples ? <CardPreview items={peoples.results}/> : <Spinner /> }
+            </CharactersPageContainer>
         </div>
     );
 };

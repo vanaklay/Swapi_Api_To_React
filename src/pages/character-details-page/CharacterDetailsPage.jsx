@@ -20,25 +20,21 @@ const CharacterDetailsPage = ({ character, onRequestOneCharacter, errorMessage }
         onRequestOneCharacter(id);
     },[id, onRequestOneCharacter]);
 
-    const renderCharacterDetails = () => {
-        if (character) {
-            return (
-                <CharacterDetailContainer>
-                    <CharacterDescriptionCard id={id} imageUrl={imageUrl} character={character} />
-                    <AreasContainer>
-                        <RelatedMoviesArea relatedItems={character.films}>Films</RelatedMoviesArea>
-                        <RelatedVehiculesArea relatedItems={character.vehicles}>Véhicules</RelatedVehiculesArea>
-                        <RelatedStarshipsArea relatedItems={character.starships}>Vaisseaux</RelatedStarshipsArea>
-                    </AreasContainer>
-                </CharacterDetailContainer>);
-        } else if (errorMessage) {
-            return <Redirect to='/characters' />;
-        } else {
-            return <Spinner />;
-        }
-    };
-
-    return renderCharacterDetails();
+    if (character) {
+        return (
+            <CharacterDetailContainer>
+                <CharacterDescriptionCard id={id} imageUrl={imageUrl} character={character} />
+                <AreasContainer>
+                    <RelatedMoviesArea relatedItems={character.films}>Films</RelatedMoviesArea>
+                    <RelatedVehiculesArea relatedItems={character.vehicles}>Véhicules</RelatedVehiculesArea>
+                    <RelatedStarshipsArea relatedItems={character.starships}>Vaisseaux</RelatedStarshipsArea>
+                </AreasContainer>
+            </CharacterDetailContainer>);
+    } else if (errorMessage) {
+        return <Redirect to='/404' />;
+    } else {
+        return <Spinner />;
+    }
 };
 const mapStateToProps = state => ({
     character: state.description.character,

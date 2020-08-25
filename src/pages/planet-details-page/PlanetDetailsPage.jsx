@@ -1,11 +1,51 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-const PlanetDetailsPage = () => {
-    return (
-        <div>
-            HELLO PLANET DETAILS TATOONE 
-        </div>
-    );
+import { requestPlanet } from '../../redux/planets/PlanetsActions';
+
+import PlanetDescription from '../../components/planet-description/PlanetDescription';
+import Spinner from '../../components/spinner/Spinner';
+import RelatedMoviesArea from '../../components/related-movies-area/RelatedMoviesArea';
+
+import { PlanetDetailContainer, AreasContainer } from './PlanetDetailsPage.styles';
+
+const PlanetDetailsPage = ({ match, onResquestThisPlanet, planet, errorMessage, history }) => {
+    const idPlanet = match.params.page;
+    const imageUrl = 'planets/' + idPlanet + '.jpg';
+    useEffect(() => {
+        onResquestThisPlanet(idPlanet)
+    }, [onResquestThisPlanet, idPlanet],);
+
+    if (errorMessage) {
+        // need to modify this code because after redirect we cannot click on card
+        return <Redirect to='/404' />;
+    } else {
+        return (
+            <PlanetDetailContainer>
+                { planet ? (
+                    <PlanetDescription planet={planet} imageUrl={imageUrl} /> 
+                ) : (
+                    <Spinner />
+                )}
+                <AreasContainer>
+                    { planet ? (
+                        <RelatedMoviesArea relatedItems={planet.films}>Films</RelatedMoviesArea>
+                    ) : (
+                        <Spinner />
+                    )}
+                </AreasContainer>
+            </PlanetDetailContainer>
+        );
+    }
 };
 
-export default PlanetDetailsPage;
+const mapStateToProps = state => ({
+    planet: state.planets.planet,
+    errorMessage: state.planets.errorMessage
+});
+
+const mapDispatchToProps = dispatch => ({
+    onResquestThisPlanet: (id) => dispatch(requestPlanet(id))
+});
+export default connect(mapStateToProps, mapDispatchToProps)(PlanetDetailsPage);

@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import './index.css';
+import Header from './components/header/Header';
 import App from './App';
 import 'tachyons';
 import * as serviceWorker from './serviceWorker';
@@ -13,6 +14,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <React.StrictMode>
+        <Header />
         <App />
       </React.StrictMode>
     </BrowserRouter>
