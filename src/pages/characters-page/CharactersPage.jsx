@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Spinner from '../../components/spinner/Spinner';
 import Pagination from '../../components/pagination/Pagination';
 import CardPreview from '../../components/card-preview/CardPreview';
-import { CharactersPageContainer } from './CharactersPage.styles';
+import { CharactersPageContainer, PagesContainer } from './CharactersPage.styles';
 
 import { fetchAllCharacters } from '../../redux/characters/CharactersActions';
 
@@ -14,10 +14,17 @@ const CharactersPage = ({ onfetchAllCharacters, peoples }) => {
     useEffect(() => {
         onfetchAllCharacters(page);
     }, [onfetchAllCharacters, page]);
-    
     return (
         <div>
-            <Pagination pages={pages} handlePage={(event) => setPage(event)}/>
+            <PagesContainer>
+                <Pagination 
+                    pages={pages} 
+                    handlePage={(event) => setPage(event)}
+                    previous={peoples && peoples.previous }
+                    next={peoples && peoples.next}
+                    currentPage={page}
+                />
+            </PagesContainer>
             <CharactersPageContainer>
                 { peoples ? <CardPreview items={peoples.results}/> : <Spinner /> }
             </CharactersPageContainer>

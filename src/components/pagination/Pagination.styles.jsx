@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
 
 const ButtonStyles = css`
     box-sizing: border-box;
@@ -17,21 +16,45 @@ const ButtonStyles = css`
         color: white;
     }
 `;
+const activeButton = css`
+    background-color: black;
+    color: white;
+`;
+const getButtonStyles = props => {
+    if (props.active) {
+        return activeButton;
+    }
+}
 
 export const ButtonPageStyles = styled.button`
     ${ButtonStyles}
+    ${getButtonStyles}
+`;
+
+export const Container = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    @media (max-width: 1200px) {
+        width: 100%;
+        flex-direction: column;
+
+    }
 `;
 
 export const PaginationContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     padding: 1rem;
+    @media (max-width: 1200px) {
+        justify-content: center;
+    }
 `;
 
-export const PaginationLink = styled(Link)`
-    text-decoration: none;
+export const PaginationLink = styled.button`
     ${ButtonStyles}
+    
 
     @media (max-width: 768px) {
         display: none;

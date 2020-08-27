@@ -1,43 +1,22 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-import { HomePageContainerStyles, CategoryCardStyles } from './HomePage.styles';
+import { HomePageContainerStyles } from './HomePage.styles';
+
+import MenuItem from '../../components/menu-item/MenuItem';
+import Footer from '../../components/footer/Footer';
 
 const HomePage = () => {
     return (
-        <HomePageContainerStyles>
-            <CategoryCardStyles>
-                    <img src={require('../../img/default.jpg')} 
-                    className="db bg-center cover aspect-ratio--object" alt='img1' />
-            </CategoryCardStyles>
-            <CategoryCardStyles>
-                    <img src={require('../../img/default.jpg')} 
-                    className="db bg-center cover aspect-ratio--object" alt='img1' />
-            </CategoryCardStyles>
-            <CategoryCardStyles>
-                <div className='aspect-ratio aspect-ratio--1x1' >
-                    <img src={require('../../img/default.jpg')} 
-                    className="db bg-center cover aspect-ratio--object" alt='img1' />
-                </div>
-            </CategoryCardStyles>
-            <CategoryCardStyles>
-                <div className='aspect-ratio aspect-ratio--1x1' >
-                    <img src={require('../../img/default.jpg')} 
-                    className="db bg-center cover aspect-ratio--object" alt='img1' />
-                </div>
-            </CategoryCardStyles>
-            <CategoryCardStyles>
-                <div className='aspect-ratio aspect-ratio--1x1' >
-                    <img src={require('../../img/default.jpg')} 
-                    className="db bg-center cover aspect-ratio--object" alt='img1' />
-                </div>
-            </CategoryCardStyles>
-            <CategoryCardStyles>
-                <div className='aspect-ratio aspect-ratio--1x1' >
-                    <img src={require('../../img/default.jpg')} 
-                    className="db bg-center cover aspect-ratio--object" alt='img1' />
-                </div>
-            </CategoryCardStyles>
-        </HomePageContainerStyles>
+        <Fragment>
+            <HomePageContainerStyles>
+                <MenuItem title='Personnages' linkUrl='characters' imageUrl='https://i.ibb.co/9v92gtR/characters-sw.jpg'/>
+                <MenuItem title='Planètes' linkUrl='planets' imageUrl='https://i.ibb.co/prdwZpX/planets-sw.jpg'/>
+                <MenuItem title='Spécimens' linkUrl='species' imageUrl='https://i.ibb.co/tbb0pB7/species-sw.jpg'/>
+                <MenuItem title='Films' linkUrl='films' imageUrl='https://i.ibb.co/BcGtfRb/films-sw.jpg'/>
+            </HomePageContainerStyles>
+            <Footer />
+        </Fragment>
+
     );
 };
 
