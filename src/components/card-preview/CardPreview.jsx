@@ -4,13 +4,12 @@ import Card from '../card/Card';
 import { PreviewCard } from './CardPreview.styles';
 
 const CardPreview = ({ items }) => {
-    // what category ? 
     return (
         <PreviewCard>
             { items.map(item => {
                 return (
                     <Card 
-                        key={item.name} 
+                        key={item.name ? item.name : item.title} 
                         item={item} 
                     />);
             }) }

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-export const PlanetsPageContainer = styled.div`
+export const FilmsPageContainer = styled.div`
     display: flex;
     justify-content: center;
 `;
 
-export const NavBarContainer = styled.div`
+export const PagesContainer = styled.div`
     display: flex;
     justify-content: center;
 
@@ -13,6 +13,3 @@ export const NavBarContainer = styled.div`
         flex-direction: column;
     }
 `;
-
-
-

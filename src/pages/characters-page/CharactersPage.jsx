@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import Spinner from '../../components/spinner/Spinner';
-import Pagination from '../../components/pagination/Pagination';
+import NavPages from '../../components/navigation-bars/NavPages';
 import CardPreview from '../../components/card-preview/CardPreview';
 import { CharactersPageContainer, PagesContainer } from './CharactersPage.styles';
 
@@ -17,7 +17,7 @@ const CharactersPage = ({ onfetchAllCharacters, peoples }) => {
     return (
         <div>
             <PagesContainer>
-                <Pagination 
+                <NavPages 
                     pages={pages} 
                     handlePage={(event) => setPage(event)}
                     previous={peoples && peoples.previous }

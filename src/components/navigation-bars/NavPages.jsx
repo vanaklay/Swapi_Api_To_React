@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { ButtonPageStyles, 
         PaginationContainer, 
         PaginationLink, 
-        Container } from './Pagination.styles';
+        Container,
+        LinkContainerStyles, LinkStyles
+     } from './Nav.styles';
 
-import CustomLink from '../custom-link/CustomLink';
-
-const Pagination = ({ pages, handlePage, previous, next, currentPage }) => {
+const NavPages = ({ pages, handlePage, previous, next, currentPage }) => {
     const [newPrevious, setPrevious] = useState('');
     const [newNext, setNext] = useState('');
     useEffect(()=> {
@@ -27,8 +27,11 @@ const Pagination = ({ pages, handlePage, previous, next, currentPage }) => {
     };
     return (
         <Container>
-            <CustomLink home='Accueil' />
-            <PaginationContainer >
+            <LinkContainerStyles >
+                    <LinkStyles to='/'>Accueil</LinkStyles>
+            </LinkContainerStyles>
+            {   pages &&
+                (<PaginationContainer >
                 { previous && <PaginationLink onClick={() => handlePage(newPrevious)}>Précédent</PaginationLink> }
                 { pages.map(page => (
                     <ButtonPageStyles 
@@ -38,9 +41,9 @@ const Pagination = ({ pages, handlePage, previous, next, currentPage }) => {
                     >{page}</ButtonPageStyles>
                     )) }
                 {next && <PaginationLink onClick={() => handlePage(newNext)}>Suivant</PaginationLink>}
-            </PaginationContainer>
+            </PaginationContainer> )}
         </Container>
     );
 };
 
-export default Pagination;
+export default NavPages;

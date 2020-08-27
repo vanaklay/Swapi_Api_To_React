@@ -20,4 +20,4 @@ export const requestAllPlanetsPerPage = (page) => {
         .then(data => dispatch(fetchSuccess(ALL_PLANETS_SUCCESS, data)))
         .catch(error => dispatch(fetchFailed(ALL_PLANETS_FAILED, error.message)));
     }
-}
+};

@@ -14,7 +14,10 @@ const Card = ({ item, history, match }) => {
     } else if (match.url === '/planets') {
       id = item.url.split('/')[5];
       imageUrl = 'planets/' + id + '.jpg';
-    }
+    } else if (match.url === '/films') {
+      id = item.url.split('/')[5];
+      imageUrl = 'films/' + id + '.jpg';
+    } 
     
     const handleClick = (id) => {
       history.push(`${match.path}${id}`);
@@ -22,7 +25,7 @@ const Card = ({ item, history, match }) => {
     return (
         <CardContainer onClick={() => handleClick(id)} >
           <CardImageContainer src={requireImage(imageUrl)} alt={item.name} />
-          <h2>{item.name}</h2>
+          <h2>{item.name ? item.name : item.title}</h2>
         </CardContainer>
     );
 };

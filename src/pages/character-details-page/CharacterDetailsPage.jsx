@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, Redirect, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import CharacterDescriptionCard from '../../components/character-description-card/CharacterDescriptionCard';
@@ -7,6 +7,7 @@ import RelatedMoviesArea from '../../components/related-movies-area/RelatedMovie
 import RelatedVehiculesArea from '../../components/related-vehicules/RelatedVehiculesArea';
 import RelatedStarshipsArea from '../../components/related-starships-area/RelatedStarshipsArea';
 import Spinner from '../../components/spinner/Spinner';
+import NavDetails from '../../components/navigation-bars/NavDetails';
 
 import { CharacterDetailContainer, AreasContainer } from './CharacterDetailsPage.styles';
 
@@ -14,6 +15,7 @@ import { requestOneCharacter } from '../../redux/description-character/Descripti
 
 const CharacterDetailsPage = ({ character, onRequestOneCharacter, errorMessage }) => {
     const id = useParams().id;
+    const url = useRouteMatch().url.split('/')[1];
     const imageUrl = id + '.jpg';
 
     useEffect(() => {
@@ -23,6 +25,9 @@ const CharacterDetailsPage = ({ character, onRequestOneCharacter, errorMessage }
     if (character) {
         return (
             <CharacterDetailContainer>
+                <NavDetails 
+                    url={url}
+                    />
                 <CharacterDescriptionCard id={id} imageUrl={imageUrl} character={character} />
                 <AreasContainer>
                     <RelatedMoviesArea relatedItems={character.films}>Films</RelatedMoviesArea>

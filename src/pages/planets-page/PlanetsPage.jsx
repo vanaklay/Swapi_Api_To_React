@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import { requestAllPlanetsPerPage } from '../../redux/planets/PlanetsActions';
 
 import Spinner from '../../components/spinner/Spinner';
-import Pagination from '../../components/pagination/Pagination';
+import NavPages from '../../components/navigation-bars/NavPages';
 import CardPreview from '../../components/card-preview/CardPreview';
 
-import { PlanetsPageContainer } from './PlanetsPage.styles';
+import { PlanetsPageContainer, NavBarContainer } from './PlanetsPage.styles';
 
 
 const PlanetsPage = ({ onRequestPlanets, planets }) => {
@@ -18,8 +18,16 @@ const PlanetsPage = ({ onRequestPlanets, planets }) => {
     }, [onRequestPlanets, page]);
 
     return (
-        <div>
-            <Pagination pages={pages} handlePage={(event) => setPage(event)}/>
+        <Fragment>
+            <NavBarContainer>
+            <NavPages 
+                pages={pages} 
+                handlePage={(event) => setPage(event)}
+                previous={planets && planets.previous }
+                next={planets && planets.next}
+                currentPage={page}
+                />
+            </NavBarContainer>
             <PlanetsPageContainer>
                 { planets ? (
                     <CardPreview items={planets.results} /> 
@@ -27,7 +35,7 @@ const PlanetsPage = ({ onRequestPlanets, planets }) => {
                     <Spinner />
                 ) }
             </PlanetsPageContainer>
-        </div>
+        </Fragment>
     );
 };
 
