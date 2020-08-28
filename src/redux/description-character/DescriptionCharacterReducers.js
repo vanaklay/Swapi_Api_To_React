@@ -1,4 +1,4 @@
-import { REQUEST_ONE_CHAR_START, REQUEST_ONE_CHAR_SUCCESS, REQUEST_ONE_CHAR_FAILED, REQUEST_EACH_FROM_LIST_START } from '../types';
+import { REQUEST_ONE_CHAR_START, REQUEST_ONE_CHAR_SUCCESS, REQUEST_ONE_CHAR_FAILED } from '../types';
 
 const INITIAL_STATE = {
     character: null,
@@ -14,8 +14,6 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, isFetching: false, character: action.payload };
         case REQUEST_ONE_CHAR_FAILED:
             return { ...state, isFetching: false, errorMessage: action.payload };
-        case REQUEST_EACH_FROM_LIST_START:
-            return { ...state, isFetching: true };
         default:
             return state;
     }

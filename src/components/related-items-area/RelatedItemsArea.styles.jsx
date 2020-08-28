@@ -17,5 +17,9 @@ export const AreaHeader = styled.div`
     height: 4rem;
     border-bottom: 1px solid lightgray;
     text-align: center;
-    
+`;
+
+export const NothingRelated = styled.div`
+    padding-top: 1rem;
+    padding-left: 1rem
 `;

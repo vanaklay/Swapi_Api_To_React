@@ -3,9 +3,10 @@ import { useParams, Redirect, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import CharacterDescriptionCard from '../../components/character-description-card/CharacterDescriptionCard';
-import RelatedMoviesArea from '../../components/related-movies-area/RelatedMoviesArea';
-import RelatedVehiculesArea from '../../components/related-vehicules/RelatedVehiculesArea';
-import RelatedStarshipsArea from '../../components/related-starships-area/RelatedStarshipsArea';
+// import RelatedMoviesArea from '../../components/related-movies-area/RelatedMoviesArea';
+// import RelatedVehiculesArea from '../../components/related-vehicules/RelatedVehiculesArea';
+// import RelatedStarshipsArea from '../../components/related-starships-area/RelatedStarshipsArea';
+import RelatedItemsArea from '../../components/related-items-area/RelatedItemsArea';
 import Spinner from '../../components/spinner/Spinner';
 import NavDetails from '../../components/navigation-bars/NavDetails';
 
@@ -30,9 +31,9 @@ const CharacterDetailsPage = ({ character, onRequestOneCharacter, errorMessage }
                     />
                 <CharacterDescriptionCard id={id} imageUrl={imageUrl} character={character} />
                 <AreasContainer>
-                    <RelatedMoviesArea relatedItems={character.films}>Films</RelatedMoviesArea>
-                    <RelatedVehiculesArea relatedItems={character.vehicles}>Véhicules</RelatedVehiculesArea>
-                    <RelatedStarshipsArea relatedItems={character.starships}>Vaisseaux</RelatedStarshipsArea>
+                    <RelatedItemsArea relatedItems={character.films} category='films'>Films</RelatedItemsArea>
+                    <RelatedItemsArea relatedItems={character.vehicles} category='vehicles'>Véhicules</RelatedItemsArea>
+                    <RelatedItemsArea relatedItems={character.starships} category='starships'>Vaisseaux</RelatedItemsArea>
                 </AreasContainer>
             </CharacterDetailContainer>);
     } else if (errorMessage) {

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import FilmDescription from '../../components/film-description/FilmDescription';
 import Spinner from '../../components/spinner/Spinner';
 import NavDetails from '../../components/navigation-bars/NavDetails';
-import RelatedCharactersArea from '../../components/related-characters-area/RelatedCharactersArea';
+import RelatedItemsArea from '../../components/related-items-area/RelatedItemsArea';
 
 import { FilmDetailContainer, AreasContainer } from './FilmDetailsPage.styles';
 
@@ -19,7 +19,6 @@ const FilmDetailsPage = ({ film, onRequestOneFilm, errorMessage }) => {
     useEffect(() => {
         onRequestOneFilm(id);
     },[id, onRequestOneFilm]);
-
     if (film) {
         return (
             <FilmDetailContainer>
@@ -28,7 +27,8 @@ const FilmDetailsPage = ({ film, onRequestOneFilm, errorMessage }) => {
                     />
                 <FilmDescription id={id} imageUrl={imageUrl} film={film} />
                 <AreasContainer>
-                    <RelatedCharactersArea relatedItems={film.characters}/>
+                    <RelatedItemsArea relatedItems={film.characters} category='characters'>Personnages du film</RelatedItemsArea>
+                    <RelatedItemsArea relatedItems={film.planets} category='planets'>Planètes du film</RelatedItemsArea>
                 </AreasContainer>
             </FilmDetailContainer>);
     } else if (errorMessage) {
