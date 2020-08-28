@@ -3,9 +3,6 @@ import { useParams, Redirect, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import CharacterDescriptionCard from '../../components/character-description-card/CharacterDescriptionCard';
-// import RelatedMoviesArea from '../../components/related-movies-area/RelatedMoviesArea';
-// import RelatedVehiculesArea from '../../components/related-vehicules/RelatedVehiculesArea';
-// import RelatedStarshipsArea from '../../components/related-starships-area/RelatedStarshipsArea';
 import RelatedItemsArea from '../../components/related-items-area/RelatedItemsArea';
 import Spinner from '../../components/spinner/Spinner';
 import NavDetails from '../../components/navigation-bars/NavDetails';
@@ -17,7 +14,7 @@ import { requestOneCharacter } from '../../redux/description-character/Descripti
 const CharacterDetailsPage = ({ character, onRequestOneCharacter, errorMessage }) => {
     const id = useParams().id;
     const url = useRouteMatch().url.split('/')[1];
-    const imageUrl = id + '.jpg';
+    const imageUrl = url + '/' + id + '.jpg';
 
     useEffect(() => {
         onRequestOneCharacter(id);

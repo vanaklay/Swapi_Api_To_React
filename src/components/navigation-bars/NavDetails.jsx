@@ -10,7 +10,7 @@ const NavDetails = ({ url }) => {
         <Container>
             <LinkContainerStyles>
                 <LinkStyles to='/'>Accueil/</LinkStyles>
-                { url === 'characters' ? <LinkStyles to='/characters'>Personnages</LinkStyles> : null }
+                { url === 'people' ? <LinkStyles to='/people'>Personnages</LinkStyles> : null }
                 { url === 'planets' ? <LinkStyles to='/planets'>Planètes</LinkStyles> : null }
                 { url === 'species' ? <LinkStyles to='/species'>Spécimens</LinkStyles> : null }
                 { url === 'films' ? <LinkStyles to='/films'>Films</LinkStyles> : null }

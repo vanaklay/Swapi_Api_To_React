@@ -16,8 +16,8 @@ const App = () => {
     <div className='app-container'>
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route exact path='/characters/' component={CharactersPage} />
-        <Route path='/characters/:id' component={CharacterDetailsPage} />
+        <Route exact path='/people/' component={CharactersPage} />
+        <Route path='/people/:id' component={CharacterDetailsPage} />
         <Route exact path='/planets/' component={PlanetsPage} />
         <Route path='/planets/:page' component={PlanetDetailsPage} />
         <Route exact path='/films/' component={FilmsPage} />

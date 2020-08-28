@@ -6,7 +6,7 @@ import { requestPlanet } from '../../redux/planets/PlanetsActions';
 
 import PlanetDescription from '../../components/planet-description/PlanetDescription';
 import Spinner from '../../components/spinner/Spinner';
-import RelatedMoviesArea from '../../components/related-movies-area/RelatedMoviesArea';
+import RelatedItemsArea from '../../components/related-items-area/RelatedItemsArea';
 import NavDetails from '../../components/navigation-bars/NavDetails';
 
 import { PlanetDetailContainer, AreasContainer } from './PlanetDetailsPage.styles';
@@ -31,7 +31,7 @@ const PlanetDetailsPage = ({ match, onResquestThisPlanet, planet, errorMessage }
                 )}
                 <AreasContainer>
                     { planet ? (
-                        <RelatedMoviesArea relatedItems={planet.films}>Films</RelatedMoviesArea>
+                        <RelatedItemsArea relatedItems={planet.films} category='films'>Films</RelatedItemsArea>
                     ) : (
                         <Spinner />
                     )}

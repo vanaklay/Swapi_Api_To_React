@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import ReactShadowScroll from 'react-shadow-scroll';
 
 import { requestPlanetsArray } from '../../redux/related-planets/RelatedPlanetsActions';
 import { requestArrayOfCharacters } from '../../redux/related-characters/RelatedCharactersActions';
@@ -8,8 +9,9 @@ import { requestStarships } from '../../redux/related-starships/RelatedStarships
 import { requestVehicles } from '../../redux/related-vehicules/RelatedVehiculesActions';
 
 import Spinner from '../spinner/Spinner';
+import CardMini from '../card-mini/CardMini';
 
-import { AreaContainer, AreaHeader, NothingRelated } from './RelatedItemsArea.styles';
+import { NothingRelated, CardContainer, Subtitle, Ul } from './RelatedItemsArea.styles';
 
 const RelatedItemsArea = ({ onRequestArray, relatedItems, itemsArray, children }) => {
     useEffect(() => {
@@ -21,11 +23,11 @@ const RelatedItemsArea = ({ onRequestArray, relatedItems, itemsArray, children }
     const renderRelatedFeatures = () => {
         if (relatedItems.length) {
             if (itemsArray) {
-                return itemsArray.map(item => item.name ? (
-                    <p key={item.name} >{ item.name }</p>
-                    ) : (
-                        <p key={item.title} >{ item.title }</p>
-                    ))
+                return (
+                        <Ul>
+                            { itemsArray.map(item => <CardMini item={item} key={ item.name ? item.name : item.title }/>) }
+                        </Ul>
+                    );
             } else {
                 return <Spinner />;
             }
@@ -34,10 +36,12 @@ const RelatedItemsArea = ({ onRequestArray, relatedItems, itemsArray, children }
         }
     }
     return (
-            <AreaContainer>
-                <AreaHeader>{children}</AreaHeader>
-                { renderRelatedFeatures() }
-            </AreaContainer>
+            <CardContainer>
+                <Subtitle>{children}</Subtitle>
+                <ReactShadowScroll isShadow={true} scrollWidth={10} scrollPadding={5}>
+                 { renderRelatedFeatures() }
+                </ReactShadowScroll>
+            </CardContainer>
         );
 };
 

@@ -9,7 +9,7 @@ const HomePage = () => {
     return (
         <Fragment>
             <HomePageContainerStyles>
-                <MenuItem title='Personnages' linkUrl='characters' imageUrl='https://i.ibb.co/9v92gtR/characters-sw.jpg'/>
+                <MenuItem title='Personnages' linkUrl='people' imageUrl='https://i.ibb.co/9v92gtR/characters-sw.jpg'/>
                 <MenuItem title='Planètes' linkUrl='planets' imageUrl='https://i.ibb.co/prdwZpX/planets-sw.jpg'/>
                 <MenuItem title='Spécimens' linkUrl='species' imageUrl='https://i.ibb.co/tbb0pB7/species-sw.jpg'/>
                 <MenuItem title='Films' linkUrl='films' imageUrl='https://i.ibb.co/BcGtfRb/films-sw.jpg'/>
