@@ -21,7 +21,9 @@ export const fetchFailed = (type, payload) => ({
     payload: payload
 });
 
-export const createItems = async (item, numbers) => {
+export const createItems = async (relatedItems) => {
+    const item = (relatedItems[0].split('/')[4]);
+    const numbers = relatedItems.map(item => item.split('/')[5]);
     const asyncItems = await Promise.all(numbers.map(async num => {
         return await fetchDataFromSwapi(`https://swapi.dev/api/${item}/${num}/`);
     } ));

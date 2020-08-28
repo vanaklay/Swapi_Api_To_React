@@ -1,6 +1,6 @@
 import { REQUEST_ONE_CHAR_START,
         REQUEST_ONE_CHAR_SUCCESS,
-        REQUEST_ONE_CHAR_FAILED
+        REQUEST_ONE_CHAR_FAILED,
  } from '../types';
 
  import { fetchDataFromSwapi, fetchStart, fetchSuccess, fetchFailed } from '../../utils/useFetchDataFromSwapi';
@@ -12,4 +12,4 @@ import { REQUEST_ONE_CHAR_START,
         .then(data => dispatch(fetchSuccess(REQUEST_ONE_CHAR_SUCCESS, data)))
         .catch(error => dispatch(fetchFailed(REQUEST_ONE_CHAR_FAILED, error.message)));
     }
-}
+};

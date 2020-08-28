@@ -21,7 +21,7 @@ const RelatedVehiculesArea = ({ relatedItems, children, onRequestVehicles, items
                 return <Spinner />;
             }
         } else {
-            return <div>Non renseigné</div>
+            return <div>n/a</div>
         }
     }
     return (

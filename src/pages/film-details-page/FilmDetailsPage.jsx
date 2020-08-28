@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import FilmDescription from '../../components/film-description/FilmDescription';
 import Spinner from '../../components/spinner/Spinner';
 import NavDetails from '../../components/navigation-bars/NavDetails';
+import RelatedCharactersArea from '../../components/related-characters-area/RelatedCharactersArea';
 
 import { FilmDetailContainer, AreasContainer } from './FilmDetailsPage.styles';
 
@@ -20,7 +21,6 @@ const FilmDetailsPage = ({ film, onRequestOneFilm, errorMessage }) => {
     },[id, onRequestOneFilm]);
 
     if (film) {
-        console.log(film);
         return (
             <FilmDetailContainer>
                 <NavDetails 
@@ -28,7 +28,7 @@ const FilmDetailsPage = ({ film, onRequestOneFilm, errorMessage }) => {
                     />
                 <FilmDescription id={id} imageUrl={imageUrl} film={film} />
                 <AreasContainer>
-                    
+                    <RelatedCharactersArea relatedItems={film.characters}/>
                 </AreasContainer>
             </FilmDetailContainer>);
     } else if (errorMessage) {
