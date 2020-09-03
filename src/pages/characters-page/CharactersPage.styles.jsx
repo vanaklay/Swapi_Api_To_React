@@ -5,11 +5,7 @@ export const CharactersPageContainer = styled.div`
     justify-content: center;
 `;
 
-export const PagesContainer = styled.div`
-    display: flex;
-    justify-content: center;
-
-    @media (max-width: 1200px) {
-        flex-direction: column;
-    }
+export const Container = styled.div`
+    max-width: 1200px;
+    margin: 0 auto;
 `;

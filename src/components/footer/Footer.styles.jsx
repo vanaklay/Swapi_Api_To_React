@@ -9,4 +9,8 @@ export const FooterContainerStyles = styled.div`
     color: white;
     font-size: 1rem;
     font-weight: 700;
+
+    @media (max-width: 1200px) {
+        flex-direction: column;
+    }
 `;

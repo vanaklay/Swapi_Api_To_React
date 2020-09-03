@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import { requestAllPlanetsPerPage } from '../../redux/planets/PlanetsActions';
@@ -7,7 +7,7 @@ import Spinner from '../../components/spinner/Spinner';
 import NavPages from '../../components/navigation-bars/NavPages';
 import CardPreview from '../../components/card-preview/CardPreview';
 
-import { PlanetsPageContainer, NavBarContainer } from './PlanetsPage.styles';
+import { PlanetsPageContainer, Container } from './PlanetsPage.styles';
 
 
 const PlanetsPage = ({ onRequestPlanets, planets }) => {
@@ -18,8 +18,7 @@ const PlanetsPage = ({ onRequestPlanets, planets }) => {
     }, [onRequestPlanets, page]);
 
     return (
-        <Fragment>
-            <NavBarContainer>
+        <Container>
             <NavPages 
                 pages={pages} 
                 handlePage={(event) => setPage(event)}
@@ -27,7 +26,6 @@ const PlanetsPage = ({ onRequestPlanets, planets }) => {
                 next={planets && planets.next}
                 currentPage={page}
                 />
-            </NavBarContainer>
             <PlanetsPageContainer>
                 { planets ? (
                     <CardPreview items={planets.results} /> 
@@ -35,7 +33,7 @@ const PlanetsPage = ({ onRequestPlanets, planets }) => {
                     <Spinner />
                 ) }
             </PlanetsPageContainer>
-        </Fragment>
+        </Container>
     );
 };
 

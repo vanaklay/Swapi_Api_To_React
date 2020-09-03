@@ -17,7 +17,10 @@ const Card = ({ item, history, match }) => {
     } else if (match.url === '/films') {
       id = item.url.split('/')[5];
       imageUrl = 'films/' + id + '.jpg';
-    } 
+    } else if (match.url === '/species') {
+      id = item.url.split('/')[5];
+      imageUrl = 'species/' + id + '.jpg';
+    }
     const handleClick = (id) => {
 
       history.push(`${match.path}${id}`);

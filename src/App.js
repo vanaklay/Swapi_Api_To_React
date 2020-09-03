@@ -8,6 +8,8 @@ import PlanetDetailsPage from './pages/planet-details-page/PlanetDetailsPage';
 import PlanetsPage from './pages/planets-page/PlanetsPage';
 import FilmsPage from './pages/films-page/FilmsPage';
 import FilmDetailsPage from './pages/film-details-page/FilmDetailsPage';
+import SpeciesPage from './pages/species-page/SpeciesPage';
+import SpecieDetailsPage from './pages/specie-details-page/SpecieDetailsPage';
 import NotFoundPage from './pages/not-found-page/NotFoundPage';
 import './App.css';
 
@@ -22,6 +24,8 @@ const App = () => {
         <Route path='/planets/:page' component={PlanetDetailsPage} />
         <Route exact path='/films/' component={FilmsPage} />
         <Route path='/films/:id' component={FilmDetailsPage} />
+        <Route exact path='/species/' component={SpeciesPage} />
+        <Route path='/species/:id' component={SpecieDetailsPage} />
         <Route path='/404' component={NotFoundPage} />
         <Route component={NotFoundPage} />
       </Switch>

@@ -9,6 +9,7 @@ import CharactersReducers from './characters/CharactersReducers';
 import DescriptionCharacterReducers from './description-character/DescriptionCharacterReducers';
 import PlanetsReducers from './planets/PlanetsReducers';
 import FilmsReducers from './films/FilmsReducers';
+import SpeciesReducers from './species/SpeciesReducers';
 
 const rootReducer = combineReducers({
     movies: RelatedMoviesReducers,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
     characters: CharactersReducers,
     description: DescriptionCharacterReducers,
     planets: PlanetsReducers,
-    films: FilmsReducers
+    films: FilmsReducers,
+    species: SpeciesReducers
 });
 
 export default rootReducer;

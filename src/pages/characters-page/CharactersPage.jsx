@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Spinner from '../../components/spinner/Spinner';
 import NavPages from '../../components/navigation-bars/NavPages';
 import CardPreview from '../../components/card-preview/CardPreview';
-import { CharactersPageContainer, PagesContainer } from './CharactersPage.styles';
+import { CharactersPageContainer, Container } from './CharactersPage.styles';
 
 import { fetchAllCharacters } from '../../redux/characters/CharactersActions';
 
@@ -15,20 +15,18 @@ const CharactersPage = ({ onfetchAllCharacters, peoples }) => {
         onfetchAllCharacters(page);
     }, [onfetchAllCharacters, page]);
     return (
-        <div>
-            <PagesContainer>
-                <NavPages 
-                    pages={pages} 
-                    handlePage={(event) => setPage(event)}
-                    previous={peoples && peoples.previous }
-                    next={peoples && peoples.next}
-                    currentPage={page}
-                />
-            </PagesContainer>
+        <Container>
+            <NavPages 
+                pages={pages} 
+                handlePage={(event) => setPage(event)}
+                previous={peoples && peoples.previous }
+                next={peoples && peoples.next}
+                currentPage={page}
+            />
             <CharactersPageContainer>
                 { peoples ? <CardPreview items={peoples.results}/> : <Spinner /> }
             </CharactersPageContainer>
-        </div>
+        </Container>
     );
 };
 

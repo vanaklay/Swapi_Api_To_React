@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Redirect, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import CharacterDescriptionCard from '../../components/character-description-card/CharacterDescriptionCard';
+import CharacterDescriptionCard from '../../components/descriptions/CharacterDescriptionCard';
 import RelatedItemsArea from '../../components/related-items-area/RelatedItemsArea';
 import Spinner from '../../components/spinner/Spinner';
 import NavDetails from '../../components/navigation-bars/NavDetails';

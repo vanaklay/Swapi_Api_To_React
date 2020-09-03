@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { requestPlanet } from '../../redux/planets/PlanetsActions';
-import { DescriptionContainer, DetailsContainer, ImageContainer, NameStyles, PlanetLink } from './CharacterDescriptionCard.styles';
+import { DescriptionContainer, DetailsContainer, ImageContainer, NameStyles, PlanetLink } from './Descriptions.styles';
 import { requireImage } from '../../utils/useRequireImage';
 
 const CharacterDescriptionCard = ({ character, imageUrl, onRequestPlanet, planet }) => {

@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import { requestPlanet } from '../../redux/planets/PlanetsActions';
 
-import PlanetDescription from '../../components/planet-description/PlanetDescription';
+import PlanetDescription from '../../components/descriptions/PlanetDescription';
 import Spinner from '../../components/spinner/Spinner';
 import RelatedItemsArea from '../../components/related-items-area/RelatedItemsArea';
 import NavDetails from '../../components/navigation-bars/NavDetails';

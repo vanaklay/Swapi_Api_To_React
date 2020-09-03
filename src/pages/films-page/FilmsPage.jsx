@@ -5,7 +5,7 @@ import Spinner from '../../components/spinner/Spinner';
 import NavPages from '../../components/navigation-bars/NavPages';
 import CardPreview from '../../components/card-preview/CardPreview';
 
-import { FilmsPageContainer, PagesContainer } from './FilmsPage.styles';
+import { FilmsContainer, Container } from './FilmsPage.styles';
 import { requestAllFilms } from '../../redux/films/FilmsActions';
 
 const FilmsPage = ({ onrequestAllFilms, films }) => {
@@ -13,17 +13,15 @@ const FilmsPage = ({ onrequestAllFilms, films }) => {
         onrequestAllFilms();
     }, [onrequestAllFilms]);
     return (
-        <div>
-            <PagesContainer>
-                <NavPages 
-                    previous={films && films.previous }
-                    next={films && films.next}
-                />
-            </PagesContainer>
-            <FilmsPageContainer>
+        <Container>
+            <NavPages 
+                previous={films && films.previous }
+                next={films && films.next}
+            />
+            <FilmsContainer>
                 { films ? <CardPreview items={films.results}/> : <Spinner /> }
-            </FilmsPageContainer>
-        </div>
+            </FilmsContainer>
+        </Container>
     );
 };
 

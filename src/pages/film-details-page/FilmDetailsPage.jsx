@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Redirect, useRouteMatch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import FilmDescription from '../../components/film-description/FilmDescription';
+import FilmDescription from '../../components/descriptions/FilmDescription';
 import Spinner from '../../components/spinner/Spinner';
 import NavDetails from '../../components/navigation-bars/NavDetails';
 import RelatedItemsArea from '../../components/related-items-area/RelatedItemsArea';

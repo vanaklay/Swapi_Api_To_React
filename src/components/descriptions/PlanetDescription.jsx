@@ -1,5 +1,5 @@
 import React from 'react';
-import { DescriptionContainer, DetailsContainer, ImageContainer, NameStyles } from './planetDescription.styles';
+import { DescriptionContainer, DetailsContainer, ImageContainer, NameStyles } from './Descriptions.styles';
 import { requireImage } from '../../utils/useRequireImage';
 
 const PlanetDescription = ({ planet, imageUrl }) => {

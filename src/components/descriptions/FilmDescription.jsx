@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DescriptionContainer, DetailsContainer, ImageContainer, NameStyles } from './FilmDescription.styles';
+import { DescriptionContainer, DetailsContainer, ImageContainer, NameStyles } from './Descriptions.styles';
 import { requireImage } from '../../utils/useRequireImage';
 
 const FilmDescription = ({ imageUrl, film }) => {
