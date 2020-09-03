@@ -5,6 +5,8 @@ export const FooterContainerStyles = styled.div`
     height: 10vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: red;
+    justify-content: space-around;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
 `;
